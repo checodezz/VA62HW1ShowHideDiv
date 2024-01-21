@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="container">
+
+  <h1 class="my-4">Movie Database</h1>
+
+  <!-- GET Movies Section -->
+  <h2 class="">GET Movies</h2>
+  <button id="getMoviesBtn" class="btn btn-primary mb-2">Get Movies</button>
+
+  <div id="showAllMovies" class="my-3">
+
+  </div>
+
+
+
+  <!-- Post Movies Section -->
+  <div class="col-md-6 ">
+    <h2>POST Movie</h2>
+    <form id="inputForm">
+      <label for="movieTitle" class="form-label">Title:</label><br>
+      <input type="text" id="movieTitle" class="form-control" required><br>
+
+      <label for="releaseYear" class="form-label">Release Year:</label><br>
+      <input type="number" id="releaseYear" class="form-control" required><br>
+
+      <label class="form-label">Genre:</label>
+      <select id="selectGenre" class="form-control">
+        <option value="action">Action</option>
+        <option value="drama">Drama</option>
+        <option value="comedy">Comedy</option>
+        <option value="romance">Romance</option>
+        <option value="thriller">Thriller</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="horror">Horror</option>
+        <option value="sports">Sports</option>
+        <option value="musical">Musical</option>
+        <option value="other">Other</option>
+      </select><br>
+
+      <label for="directorInput" class="form-label">Director:</label><br>
+      <input type="text" id="directorInput" class="form-control" required><br>
+
+      <label for="languageInput" class="form-label">Language:</label><br>
+      <input type="text" id="languageInput" class="form-control" required><br>
+
+      <label for="selectCountry" class="form-label">Country</label><br>
+      <select id="selectCountry" class="form-control">
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+      </select><br>
+
+      <label for="ratingInput" class="form-label">Rating:</label>
+      <input type="number" id="ratingInput" class="form-control" required><br>
+
+      <label for="plotInput" class="form-label">Plot:</label><br>
+      <textarea id="plotInput" cols="30" rows="3" class="form-control" required></textarea><br>
+
+      <label for="awardInput" class="form-label">Awards:</label>
+      <input type="text" id="awardInput" class="form-control" required><br>
+
+      <label for="posterInput" class="form-label">Poster URL:</label><br>
+      <input type="text" id="posterInput" class="form-control" required><br>
+
+      <label for="trailerInput" class="form-label">Trailer URL:</label><br>
+      <input type="text" id="trailerInput" class="form-control" required><br>
+
+      <button type="submit" class="btn btn-success mb-3">Add Movie</button>
+    </form>
+  </div>
+  <div id="showMessage" class="mb-3">
+
+  </div>
+
+
+  <script>
+    const inputForm = document.querySelector('#inputForm')
+    const movieTitle = document.querySelector('#movieTitle')
+    const releaseYear = document.querySelector('#releaseYear')
+    const selectGenre = document.querySelector('#selectGenre')
+    const directorInput = document.querySelector('#directorInput')
+    const languageInput = document.querySelector('#languageInput')
+    const selectCountry = document.querySelector('#selectCountry')
+    const ratingInput = document.querySelector('#ratingInput')
+    const plotInput = document.querySelector('#plotInput')
+    const awardInput = document.querySelector('#awardInput')
+    const posterInput = document.querySelector('#posterInput')
+    const trailerInput = document.querySelector('#trailerInput')
+    const showMessage = document.querySelector('#showMessage')
+    const getMoviesBtn = document.querySelector('#getMoviesBtn')
+    const showAllMovies = document.querySelector('#showAllMovies')
+    const apiUrl = 'https://va-5-assignment-express-student-neog.replit.app/movies'
+
+
+    getMoviesBtn.addEventListener('click', function () {
+      showAllMovies.textContent = 'Please wait while fetching the data 🏃....'
+      fetch(apiUrl)
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          showAllMovies.textContent = ''
+          if (data) {
+            for (let i = 0; i < data.length; i++) {
+
+              // console.log(data[i]._id);
+              // console.log(JSON.stringify(data[i]));
+
+              const card = document.createElement('div')
+              card.className = 'card my-3'
+
+              const cardBody = document.createElement('div')
+              cardBody.className = 'card-body'
+
+              card.appendChild(cardBody)
+
+              const cardTitle = document.createElement('h5')
+              cardTitle.className = 'card-title'
+              cardTitle.textContent = `Movie ID: ${data[i]._id}`
+
+              const cardText = document.createElement('p')
+              cardText.className = 'card-text'
+              cardText.innerHTML = `<pre>${JSON.stringify(data[i], null, 2)}</pre>`
+
+              cardBody.appendChild(cardTitle)
+              cardBody.appendChild(cardText)
+              showAllMovies.appendChild(card)
+            }
+          } else {
+            showAllMovies.textContent = 'Data not found.'
+          }
+
+        })
+        .catch(function (error) {
+          showAllMovies.textContent =
+            'Something went wrong while fetching the data 🤔.... Please try again later.'
+        })
+
+
+
+    })
+
+    inputForm.addEventListener('submit', function (event) {
+      event.preventDefault()
+      const postObject = {
+        title: movieTitle.value,
+        releaseYear: releaseYear.value,
+        genre: selectGenre.value,
+        director: directorInput.value,
+        language: languageInput.value,
+        country: selectCountry.value,
+        rating: ratingInput.value,
+        plot: plotInput.value,
+        awards: awardInput.value,
+        posterUrl: posterInput.value,
+        trailerUrl: trailerInput.value
+      }
+
+      fetch(apiUrl, {
+        method: "POST",
+        body: JSON.stringify(postObject),
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          // console.log(data);
+          if (data) {
+            showMessage.textContent = 'Movie Added Successfully ✅.'
+          } else {
+            showMessage.textContent =
+              'Failed to add movie.'
+          }
+        })
+        .catch(function (error) {
+          showMessage.textContent =
+            'Oops...💭 something went wrong while adding the movie 🤔, Please try again later. '
+        })
+    })
+  </script>
+</body>
+
+</html>
