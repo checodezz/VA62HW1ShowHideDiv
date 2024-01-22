@@ -2,95 +2,151 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        #loading {
-            display: none;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    #loading {
+      display: none;
+    }
 
-        #success {
-            display: none;
-            color: green;
-        }
-    </style>
+    #success {
+      display: none;
+      color: green;
+    }
+  </style>
 </head>
 
 <body class="container">
 
 
-    <h1>Add Movie</h1>
+  <h1>Add Movie</h1>
 
-    <form id="">
+  <form id="formInput">
 
-        <label for="titleInput">Title:</label><br>
-        <input type="text" id="titleInput" required><br><br>
+    <label for="titleInput">Title:</label><br>
+    <input type="text" id="titleInput" required><br><br>
 
-        <label for="yearInput">Release Year:</label><br>
-        <input type="number" id="yearInput" required><br><br>
+    <label for="yearInput">Release Year:</label><br>
+    <input type="number" id="yearInput" required><br><br>
 
-        <label for="selectGenre">Genre:</label><br>
-        <select id="selectGenre">
-            <option value="action">Action</option>
-            <option value="drama">Drama</option>
-            <option value="comedy">Comedy</option>
-            <option value="romance">Romance</option>
-            <option value="thriller">Thriller</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="sci-fi">Sci-Fi</option>
-            <option value="horror">Horror</option>
-            <option value="sports">Sports</option>
-            <option value="musical">Musical</option>
-            <option value="other">Other</option>
-        </select><br><br>
+    <label for="selectGenre">Genre:</label><br>
+    <select id="selectGenre">
+      <option value="action">Action</option>
+      <option value="drama">Drama</option>
+      <option value="comedy">Comedy</option>
+      <option value="romance">Romance</option>
+      <option value="thriller">Thriller</option>
+      <option value="fantasy">Fantasy</option>
+      <option value="sci-fi">Sci-Fi</option>
+      <option value="horror">Horror</option>
+      <option value="sports">Sports</option>
+      <option value="musical">Musical</option>
+      <option value="other">Other</option>
+    </select><br><br>
 
-        <label for="directorInput">Director:</label><br>
-        <input type="text" id="directorInput" required><br><br>
+    <label for="directorInput">Director:</label><br>
+    <input type="text" id="directorInput" required><br><br>
 
-        <label for="actorInput">Actors:</label><br>
-        <input type="text" id="actorInput" required><br><br>
+    <label for="actorInput">Actors:</label><br>
+    <input type="text" id="actorInput" required><br><br>
 
-        <label for="languageInput">Language:</label><br>
-        <input type="text" id="languageInput" required><br><br>
+    <label for="languageInput">Language:</label><br>
+    <input type="text" id="languageInput" required><br><br>
 
-        <label for="countryInput">Country:</label><br>
-        <select id="countryInput" required>
-            <option value="india">India</option>
-            <option value="usa">USA</option>
-            <option value="uk">UK</option>
-        </select><br><br>
+    <label for="countryInput">Country:</label><br>
+    <select id="countryInput" required>
+      <option value="india">India</option>
+      <option value="usa">USA</option>
+      <option value="uk">UK</option>
+    </select><br><br>
 
 
-        <label for="ratingInput">Rating:</label><br>
-        <input type="number" id="ratingInput" required><br><br>
+    <label for="ratingInput">Rating:</label><br>
+    <input type="number" id="ratingInput" required><br><br>
 
-        <label for="plotInput">Plot:</label><br>
-        <textarea id="plotInput" cols="22" rows="2" required></textarea><br><br>
+    <label for="plotInput">Plot:</label><br>
+    <textarea id="plotInput" cols="22" rows="2" required></textarea><br><br>
 
-        <label for="awardInput">Awards:</label><br>
-        <input type="text" id="awardInput" required><br><br>
+    <label for="awardInput">Awards:</label><br>
+    <input type="text" id="awardInput" required><br><br>
 
-        <label for="posterInput">Poster URL:</label><br>
-        <input type="text" id="posterInput" required><br><br>
+    <label for="posterInput">Poster URL:</label><br>
+    <input type="text" id="posterInput" required><br><br>
 
-        <label for="trailerInput">Trailer URL:</label><br>
-        <input type="text" id="trailerInput" required><br><br>
+    <label for="trailerInput">Trailer URL:</label><br>
+    <input type="text" id="trailerInput" required><br><br>
 
-        <button type="submit" class="btn btn-primary">Add Movie</button><br><br>
-    </form>
+    <button type="submit" class="btn btn-primary">Add Movie</button><br><br>
+  </form>
 
-    <div id="loading">
-        Saving Data...
-    </div>
+  <div id="loading" class="mb-3">
+    Saving Data...
+  </div>
 
-    <div id="success">Movie Added Successfully</div>
+  <div id="success" class="mb-3">Movie Added Successfully</div>
 
-    <script></script>
+  <script>
+    const formInput = document.querySelector('#formInput')
+    const titleInput = document.querySelector('#titleInput')
+    const yearInput = document.querySelector('#yearInput')
+    const selectGenre = document.querySelector('#selectGenre')
+    const directorInput = document.querySelector('#directorInput')
+    const actorInput = document.querySelector('#actorInput')
+    const languageInput = document.querySelector('#languageInput')
+    const countryInput = document.querySelector('#countryInput')
+    const ratingInput = document.querySelector('#ratingInput')
+    const plotInput = document.querySelector('#plotInput')
+    const awardInput = document.querySelector('#awardInput')
+    const posterInput = document.querySelector('#posterInput')
+    const trailerInput = document.querySelector('#trailerInput')
+    const loadingContainer = document.querySelector('#loading')
+    const successContainer = document.querySelector('#success')
+
+    const apiUrl = 'https://va-5-assignment-express-student-neog.replit.app/movies'
+
+    formInput.addEventListener('submit', function (event) {
+      event.preventDefault()
+
+      loadingContainer.style.display = 'block'
+
+      const newMovieObj = {
+        title: titleInput.value,
+        releaseYear: yearInput.value,
+        genre: selectGenre.value,
+        director: directorInput.value,
+        actors: actorInput.value,
+        language: languageInput.value,
+        country: countryInput.value,
+        rating: ratingInput.value,
+        plot: plotInput.value,
+        awards: awardInput.value,
+        posterUrl: posterInput.value,
+        trailerUrl: trailerInput.value
+      }
+
+      fetch(apiUrl, {
+        method: 'POST',
+        body: JSON.stringify(newMovieObj),
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (data) {
+          if (data) {
+            loadingContainer.style.display = 'none'
+            successContainer.style.display = 'block'
+          }
+        })
+    })
+  </script>
 </body>
 
 </html>
